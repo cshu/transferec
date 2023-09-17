@@ -38,6 +38,14 @@ dependencies:
   self_signed_certificate_generator_fp:
     path: ../self-signed-certificate-generator-fp
   path_provider: ^2.1.1
+  network_info_plus: ^4.0.2
+  crypto: ^3.0.3
+  basic_utils: ^5.6.1
+  path: ^1.8.3
+  convert: ^3.1.1
+  file_picker: ^5.5.0
+  qr_flutter: ^4.1.0
+  mobile_scanner: ^3.4.1
 
 dev_dependencies:
   flutter_test:
