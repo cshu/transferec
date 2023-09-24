@@ -106,7 +106,6 @@ class MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     if (!initialized) {
       initialized = true;
-      //undone delete all empty folders if there are any?
       () async {
         final info = NetworkInfo();
         wifiIP = await info.getWifiIP();
@@ -119,7 +118,6 @@ class MyHomePageState extends State<MyHomePage> {
         if (!await lfile.exists()) await lfile.create(recursive: true);
         var lfilelen = await lfile.length();
         if (lfilelen > logSizeLimit) {
-          //fixme magic number?
           var oldLog = ppath.join(appSuppDir.path, 'oldlog');
           //var oldLogFile = File(oldLog);
           //if (await oldLogFile.exists()) await oldLogFile.delete();
@@ -147,11 +145,10 @@ class MyHomePageState extends State<MyHomePage> {
         final keyFilenm = ppath.join(appSuppDir.path, 'key.pem');
         final cerFile = File(cerFilenm);
         final keyFile = File(keyFilenm);
-        if (await cerFile.exists()) {
+        if (await keyFile.exists()) {
           cerBytes = await cerFile.readAsBytes();
           keyBytes = await keyFile.readAsBytes();
         } else {
-          //print("Creating self-signed cert"); //fixme
           var sscgf = SelfSignedCertificateGeneratorFp();
           Uint8List? certnkey = await sscgf.gen();
           if (null == certnkey) {
