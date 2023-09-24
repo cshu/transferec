@@ -40,12 +40,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'TransferEC',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Transfer EC'),
+      home: const MyHomePage(title: 'TransferEC'),
     );
   }
 }
@@ -145,6 +145,7 @@ class MyHomePageState extends State<MyHomePage> {
         final keyFilenm = ppath.join(appSuppDir.path, 'key.pem');
         final cerFile = File(cerFilenm);
         final keyFile = File(keyFilenm);
+        //fixme ? key file exiting does not mean it was really successfully written? Writing data into key file could fail halfway and end up with a corrupt key file? Do a writing to a temporary file and then rename to real key filename?
         if (await keyFile.exists()) {
           cerBytes = await cerFile.readAsBytes();
           keyBytes = await keyFile.readAsBytes();
@@ -304,6 +305,19 @@ class MyHomePageState extends State<MyHomePage> {
         //Divider(),
         const Text(
           'Example command for upload/download with curl can be found on README.md of github.com/cshu/transferec',
+        ),
+        const Divider(),
+        TextButton(
+          onPressed: () async {
+            showAboutDialog(
+              context: context,
+              applicationName: 'TransferEC',
+              applicationVersion: '1.0',
+              applicationLegalese:
+                  'Copyright \u{00A9} 2023 Chang Shu\nThis program comes with absolutely no warranty.',
+            );
+          },
+          child: const Text('About'),
         ),
       ],
     );
