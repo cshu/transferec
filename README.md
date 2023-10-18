@@ -63,3 +63,5 @@ And another possible way is to scan any FILE's QR code to get "ch" field (This a
 
 GET request will get you a response of the app internal log. It is just stored on device. Never uploaded to any server.
 
+https://play.google.com/store/apps/details?id=io.github.cshu.transferec
+
